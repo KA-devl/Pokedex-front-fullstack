@@ -1,6 +1,6 @@
-const formatDate = (date = new Date()) =>{
-  return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+//const formatDate = (date = new Date()) =>{
+  //return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
 
-}
+//}
 
-export default formatDate;
+//export default formatDate;

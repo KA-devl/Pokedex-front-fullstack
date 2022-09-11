@@ -11,7 +11,7 @@ function PokemonEdit (){
   
   useEffect(() => {
     PokemonService.getPokemon(id)
-    .then(pokemon => {setPokemon(pokemon)})
+    .then(pokemon => {setPokemon(pokemon.data)})
   }, [id])
     
   return (

@@ -16,7 +16,7 @@ function PokemonSearch () {
       return;
     }
  
-    PokemonService.searchPokemon(term).then(pokemons => setPokemons(pokemons));
+    PokemonService.searchPokemon(term).then(pokemons => setPokemons(pokemons.data));
   }
   
   return (

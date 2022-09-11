@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import PageLoading from '../components/page-loading';
-import formatDate from '../helpers/format-date';
+//import formatDate from '../helpers/format-date';
 import formatType from '../helpers/format-type';
 import PokemonService from '../services/pokemon-service';
   
@@ -13,7 +13,7 @@ function PokemonsDetail () {
   
   useEffect(() => {
     PokemonService.getPokemon(id)
-    .then(pokemon => {setPokemon(pokemon)})
+    .then(pokemon => {setPokemon(pokemon.data)})
   }, [id]);
     
   return (
@@ -52,7 +52,7 @@ function PokemonsDetail () {
                       </tr> 
                       <tr> 
                         <td>Date de création</td> 
-                        <td>{formatDate(pokemon.created)}</td> 
+                          <td>{/*formatDate(pokemon.created)*/}</td> 
                       </tr>
                     </tbody>
                   </table>

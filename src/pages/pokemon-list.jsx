@@ -9,7 +9,8 @@ function PokemonList() {
   
   useEffect(() => {
     PokemonService.getPokemons()
-    .then(pokemons => setPokemons(pokemons))
+    .then(pokemons => {
+      setPokemons(pokemons.data)})
     
   }, []);
   

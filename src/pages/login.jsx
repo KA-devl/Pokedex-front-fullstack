@@ -2,10 +2,6 @@ import React, {  useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthenticationService from '../services/authentication-service';
 
-
-
-
-
 function Login() {
 
   const navigate = useNavigate();
@@ -14,6 +10,9 @@ function Login() {
     username: { value: '' },
     password: { value: '' },
   });
+
+  const [loggedIn, setLoggedIn] = useState(false);
+ 
 
   const [message, setMessage] = useState('Vous êtes déconnecté. (pikachu / pikachu)');
 
@@ -58,16 +57,10 @@ function Login() {
     const isFormValid = validateForm();
     if(isFormValid) {
       setMessage('👉 Tentative de connexion en cours ...');
-      AuthenticationService.login(form.username.value, form.password.value).then(function(result) {
-        if(!result) {
-          setMessage('🔐 Identifiant ou mot de passe incorrect.');
-          return;
-        }
-        navigate("/pokemons")
-        
-      })
-     
-     
+       AuthenticationService.fetchToken(form.username.value, form.password.value).then(_ => {
+          navigate('/pokemons')
+        })
+      
     }
   }
 

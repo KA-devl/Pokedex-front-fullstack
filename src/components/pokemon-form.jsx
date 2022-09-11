@@ -13,8 +13,6 @@ function PokemonForm ({pokemon, isEditForm}) {
     cp: {value: pokemon.cp, isValid : true},
     types: {value: pokemon.types, isValid : true}
 
-  
-  
   });
   const navigate = useNavigate();
   
@@ -60,7 +58,8 @@ function PokemonForm ({pokemon, isEditForm}) {
   }
 
  const updatePokemon = () =>{
-  PokemonService.updatePokemon(pokemon).then(()=> navigate(`/pokemons/${pokemon.id}`))
+  PokemonService.updatePokemon(pokemon).then((pokemon)=> {
+    navigate(`/pokemons/${pokemon.data.id}`)})
  }
 
 

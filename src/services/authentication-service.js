@@ -1,21 +1,25 @@
+
 export default class AuthenticationService {
-static isAuthenticated = false;
+  
+isAuthenticated = false;
+tokenValue = '';
 
 
-static login(username, password){
-  const isAuthenticated = (username === 'pikachu' && password ==='pikachu')
-
-  return new Promise( resolve => {
-    setTimeout(() =>{
-      this.isAuthenticated = isAuthenticated
-      resolve (isAuthenticated)
-    }, 500)
+static fetchToken(username, password){
+  return fetch('https://evening-thicket-97418.herokuapp.com/api/login', {
+    method: 'POST',
+    body: JSON.stringify({username: username, password: password}),
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
+  .then((res) =>res.json())
+  .then ((res) => {
+    this.tokenValue = res.token
+    this.isAuthenticated = true
+    return res.token
+  })
+ 
 }
-
-
-
-
-
 
 }
