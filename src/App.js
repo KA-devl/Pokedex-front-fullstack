@@ -16,7 +16,7 @@ function App() {
   return(<BrowserRouter>
     <nav>
     <div className="nav-wrapper teal">
-    <Link to="/" className="brand-logo center">Pokedextest</Link>
+    <Link to="/" className="brand-logo center">Pokedex Collection v1</Link>
     </div>
     </nav>
     <Routes>

@@ -12,7 +12,6 @@ static createUser(user){
 })
   .then(response => response)
   .then(error => {
-    console.log(error)
     return error
 })
  

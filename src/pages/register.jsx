@@ -56,7 +56,7 @@ function RegisterForm() {
       newForm = { ...newForm, ...{ password: newField } };
     } else if (PasswordRegex.test(form.password.value) == false) {
       const errorMsg =
-        "The password must fit the right format: 1- a minimum length of 6 2- must have at least one letter and one number ";
+        "The password must fit the right format: a minimum length of 6 and  must have at least one letter and one number ";
       const newField = {
         value: form.password.value,
         error: errorMsg,
@@ -84,15 +84,14 @@ function RegisterForm() {
       UserService.createUser(user).then((response) => {
         if (response.ok) {
           setMessage("👉 Redirecting to login page ...");
-          navigate("/register");
-        }else {
+          navigate('/login');
+        }else if(response.status == 409){
           const newField = {
             value:
-              "The username or password is not correct. Please follow the right format in order to create a new account.",
+              "The username already exists. Please choose a new username.",
             valid: true,
           }
           setbackendMessage({ ...backendMessage, ...newField });
-          console.log(backendMessage.value)
         }
       });
     }

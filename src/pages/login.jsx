@@ -13,7 +13,12 @@ function Login() {
 
  
 
-  const [message, setMessage] = useState('You are currently disconnected. You can : 1- log in using username : pikachu, password: pikachu OR 2- By creating a new account');
+  const [message, setMessage] = useState('You are currently disconnected - Please login.');
+  const [backendMessage, setbackendMessage] = useState({
+    value: '',
+    valid: false
+  }
+)
 
   const handleInputChange = (e) => {
     const fieldName = e.target.name;
@@ -55,11 +60,20 @@ function Login() {
     e.preventDefault();
     const isFormValid = validateForm();
     if(isFormValid) {
-      setMessage('👉 Tentative de connexion en cours ...');
-       AuthenticationService.fetchToken(form.username.value, form.password.value).then(_ => {
+       AuthenticationService.fetchToken(form.username.value, form.password.value).then(response => {
+        if (typeof response === 'undefined') {
+          setMessage('👎Unable to connect ');
+            let newField ={
+              value: "The username may not exist or you have entered a wrong password. Please try again.",
+              valid: true
+            }
+            setbackendMessage({...backendMessage, ...newField})
+        } else {
+          setMessage('👉 Connecting ...');
           navigate('/pokemons')
-        })
+        }
       
+      })
     }
   }
 
@@ -80,6 +94,11 @@ function Login() {
                 <div className="form-group">
                   <label htmlFor="username">Username</label>
                   <input id="username" type="text" name="username" className="form-control" value={form.username.value} onChange={e => handleInputChange(e)}></input>
+                  {backendMessage.valid &&
+                    <div style={{color:"red"}}>
+                    {backendMessage.value}
+                    </div>
+                  }
                   {/* error */}
                   {form.username.error &&
                   <div className="card-panel red accent-1"> 
