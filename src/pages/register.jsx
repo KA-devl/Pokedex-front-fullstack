@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import UserService from "../services/user-service";
@@ -150,7 +151,12 @@ function RegisterForm() {
                     {backendMessage.value}
                   </div>
                 )}
+                Already have an account?
+                <Link to="/login" >
+                 Login now! 
+                </Link>
               </div>
+              
               <div className="card-action center">
                 {/* Submit button */}
                 <button type="submit" className="btn">

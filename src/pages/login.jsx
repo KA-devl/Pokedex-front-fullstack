@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React, {  useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthenticationService from '../services/authentication-service';
@@ -115,6 +116,10 @@ function Login() {
                    {form.password.error} 
                   </div>} 
                 </div>
+                Don't have an account?
+                <Link to="/register" >
+                 Sign up now! 
+                </Link>
               </div>
               <div className="card-action center">
                 {/* Submit button */}
