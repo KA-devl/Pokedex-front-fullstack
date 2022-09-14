@@ -8,6 +8,7 @@ import PokemonEdit from "./components/pokemon-edit";
 import CreatePokemon from "./pages/create-pokemon";
 import Login from "./pages/login";
 import PrivateRoute from "./PrivateRoute";
+import RegisterForm from "./pages/register";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
     <Routes>
       <Route path="*" element={<PageNotFound/>} />
       <Route path="/login" element={<Login/>}/>
+      <Route path="/register" element={<RegisterForm/>}/>
 
       <Route element={<PrivateRoute/>}>
         <Route path="/" element={<PokemonList />} />

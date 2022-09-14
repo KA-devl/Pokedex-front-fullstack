@@ -11,10 +11,9 @@ function Login() {
     password: { value: '' },
   });
 
-  const [loggedIn, setLoggedIn] = useState(false);
  
 
-  const [message, setMessage] = useState('Vous êtes déconnecté. (pikachu / pikachu)');
+  const [message, setMessage] = useState('You are currently disconnected. You can : 1- log in using username : pikachu, password: pikachu OR 2- By creating a new account');
 
   const handleInputChange = (e) => {
     const fieldName = e.target.name;
@@ -79,7 +78,7 @@ function Login() {
                 </div>}
                 {/* Field username */}
                 <div className="form-group">
-                  <label htmlFor="username">Identifiant</label>
+                  <label htmlFor="username">Username</label>
                   <input id="username" type="text" name="username" className="form-control" value={form.username.value} onChange={e => handleInputChange(e)}></input>
                   {/* error */}
                   {form.username.error &&
@@ -89,7 +88,7 @@ function Login() {
                 </div>
                 {/* Field password */}
                 <div className="form-group">
-                  <label htmlFor="password">Mot de passe</label>
+                  <label htmlFor="password">Password</label>
                   <input id="password" type="password" name="password" className="form-control" value={form.password.value} onChange={e => handleInputChange(e)}></input>
                   {/* error */}
                   {form.password.error &&
@@ -100,7 +99,7 @@ function Login() {
               </div>
               <div className="card-action center">
                 {/* Submit button */}
-                <button type="submit" className="btn">Valider</button>
+                <button type="submit" className="btn">LOGIN</button>
               </div>
             </div>
           </div>
